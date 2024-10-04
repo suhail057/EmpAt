@@ -1,0 +1,46 @@
+﻿@model List<Attendance>
+@{
+}
+
+<h2 class="text-center mb-5">List of Attendances</h2>
+
+<div class="row mb-5">
+    <div class="col">
+        <a class="btn btn-primary" asp-controller="Attendances" asp-action="Create">Add New Attendance</a>
+    </div>
+    <div class="col">
+    </div>
+</div>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>EmployeeID</th>
+            <th>Date</th>
+            <th>Check In Time</th>
+            <th>Check Out Time</th>
+            <th>Action</th>
+        </tr>
+    </thead
+
+    <tbody>
+        @foreach (var attendance in Model)
+        {
+            <tr>
+                <td>@attendance.EmployeeID</td>
+                <td>@attendance.Date</td>
+                <td>@attendance.CheckInTime</td>
+                <td>@attendance.CheckOutTime</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn-sm" asp-controller="Attendances" asp-action="Edit"
+                        asp-route-id="@attendance.AttendanceID">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-controller="Attendances" asp-action="Delete"
+                       asp-route-id="@attendance.AttendanceID" onclick="return confirm('This will Delete remove this Attendance')">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
